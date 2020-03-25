@@ -17,7 +17,7 @@
 			<label for="nickname">What should people call you? (optional)</label>
 			<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="What is your nickname?">
 
-			<form>
+			<form id="form1">
 				<label for="message">Whats on your mind?</label>
 				<textarea v-model="message" class="message" type="text" autocomplete="off" id="textarea"></textarea>
 				<input @click.13.prevent="dispatchMessage" type="submit" value="Send">
@@ -30,7 +30,7 @@
 
 		<section class="messages">
 			<ul id="messages" v-for="message in messages">
-				<!-- render a new message component for every message -->
+				
 				<newmessage :msg="message"></newmessage>
 			</ul>
 		</section>

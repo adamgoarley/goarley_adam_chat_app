@@ -3,25 +3,23 @@ import ChatMessage from "./modules/ChatMessage.js";
 
 const socket = io();
 
-function setUserId({sID, count}) {
+function setUserId({sID, count}) 
+{
     vm.socketID = sID;
-
-    // Sets userNum to current number of other users in room when joining
     vm.userNum = count;
 };
 
 function connectSound(message){
-    // Plays sound when a user connects
-    var connectSound = new Audio("audio/user_connect.mp3");
+    // will play my voice when a new person connects
+    var connectSound = new Audio("audio/connect.m4a");
     connectSound.play();
-
-    // Adds a user to userNum when someone connects
+ 
+    // will add person to the total number of users
     vm.userNum += 1;
 
-    // Displays a message when a new user connects
     if(message !== vm.socketID) {
         socket.emit('connection_message', {
-            content: `A new user has connected.`,
+            content: `A new friend has connected!`,
             name: "Console"
         })
     }
@@ -29,7 +27,7 @@ function connectSound(message){
 
 function runDisconnectMessage(message) {
     // Plays sound when a user disconnects
-    var disconnectSound = new Audio("audio/user_disconnect.mp3");
+    var disconnectSound = new Audio("audio/disconnected.m4a");
     disconnectSound.play();
 
     // Subtracts a user from userNum when someone disconnects
@@ -48,7 +46,7 @@ function appendNewMessage(msg) {
     
     // Plays sound when messages are received
     if(msg.id !== this.id && msg.message.name !== "Console"){
-        var newMessageSound = new Audio("audio/message.mp3");
+        var newMessageSound = new Audio("audio/new_message.m4a");
         newMessageSound.play();
     }
 };
