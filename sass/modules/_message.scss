@@ -1,18 +1,17 @@
-.new-message { 
-    span { font-size: 0.8rem; display: block; margin-bottom: 2px; }
-
-    width: 45%;
+.new-message 
+{ 
+    width: 35%;
     padding: 8px 12px;
-    background-color: white; 
-    border-radius: 8px;
-    margin-bottom: 1rem;
-
     float:left;
+    background-color: rgb(19, 89, 241); 
+    border-radius: 8px;
     clear: both;
+    margin-bottom: 1rem;
 }
 
-.my-message {
-    float: right !important;
+.my-message 
+{
     background-color: #fa9c03;
+    float: right !important;
     color: white;
 }
