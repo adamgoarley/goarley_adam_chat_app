@@ -11,7 +11,8 @@
 <body>
 	<main id="app">
 		<section class="form-container">
-			<h1>Fun Chat</h1>
+			<div id="contentForm">
+				<h1>Fun Chat</h1>
 			
 			<label for="nickname">What should people call you? (optional)</label>
 			<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="What is your nickname?">
@@ -23,6 +24,8 @@
 			</form>
 
 			<p id="userCount">Friends in Chat: {{userNum}}</p>
+			</div>
+			
 		</section>
 
 		<section class="messages">

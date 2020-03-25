@@ -11,20 +11,22 @@ body {
   font: 16px Helvetica, Arial; }
 
 main {
-  display: flex;
   height: 100%;
-  flex-direction: row; }
+  padding: 60px; }
 
 .form-container, .messages {
   padding: 20px; }
 
 .form-container {
-  flex: 1;
-  border: 6px solid #ff5e63;
-  background-color: #ff5e63; }
+  background-color: #2f8bde;
+  border-radius: 40px; }
   .form-container label {
     display: block;
     margin-bottom: 0.5rem; }
+
+#contentForm {
+  width: 70%;
+  margin: auto; }
 
 .form-container label {
   color: white; }
