@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Fun Chat</title>
+	<link rel="stylesheet" href="css/main.css">
+	<script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+	<main id="app">
+		<section class="form-container">
+			<div id="contentForm">
+				<h1>Fun Chat</h1>
+			
+			<label for="nickname">What should people call you?</label>
+			<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="What is your nickname?">
+
+			<form id="form1">
+				<label for="message">Whats on your mind?</label>
+				<textarea v-model="message" class="message" type="text" autocomplete="off" id="textarea"></textarea>
+				<input @click.13.prevent="dispatchMessage" type="submit" value="Send">
+			</form>
+
+			<p id="userCount">Friends in Chat: {{userNum}}</p>
+			</div>
+			
+		</section>
+
+		<section class="messages">
+			<ul id="messages" v-for="message in messages">
+				
+				<newmessage :msg="message"></newmessage>
+			</ul>
+		</section>
+	</main>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="module" src="js/main_vm.js"></script>
+</body>
+
+</html>
