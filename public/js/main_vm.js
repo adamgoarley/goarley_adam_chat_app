@@ -1,4 +1,3 @@
-// imports always go first - if we're importing anything
 import ChatMessage from "./modules/ChatMessage.js";
 
 const socket = io();
@@ -9,31 +8,27 @@ function setUserId({sID, count})
     vm.userNum = count;
 };
 
-function connectSound(message){
+function soundConnection(message){
     // will play my voice when a new person connects
-    var connectSound = new Audio("audio/connect.m4a");
-    connectSound.play();
- 
+    var soundConnection = new Audio("audio/connect.m4a");
+    soundConnection.play();
     // will add person to the total number of users
     vm.userNum += 1;
-
     if(message !== vm.socketID) {
         socket.emit('connection_message', {
             content: `A new friend has connected!`,
             name: "Console"
         })
-    }
-}
+                }
+ }
 
 function runDisconnectMessage(message) {
-    // Plays sound when a user disconnects
-    var disconnectSound = new Audio("audio/disconnected.m4a");
-    disconnectSound.play();
 
-    // Subtracts a user from userNum when someone disconnects
+    var soundDisconnection = new Audio("audio/disconnected.m4a");
+    soundDisconnection.play();
+
     vm.userNum -= 1;
 
-    // Displays a message when a user disconnects
     socket.emit('connection_message', {
         content: message,
         name: "Console"
@@ -41,13 +36,11 @@ function runDisconnectMessage(message) {
 };
 
 function appendNewMessage(msg) {
-    // Take the incoming message and push it into the Vue instance
     vm.messages.push(msg);
-    
-    // Plays sound when messages are received
-    if(msg.id !== this.id && msg.message.name !== "Console"){
-        var newMessageSound = new Audio("audio/new_message.m4a");
-        newMessageSound.play();
+    if(msg.id !== this.id && msg.message.name !== "Console")
+    {
+        var newText = new Audio("audio/new_message.m4a");
+        newText.play();
     }
 };
 
@@ -67,7 +60,6 @@ const vm = new Vue({
                 content: this.message,
                 name: this.nickName || "Anonymous"
             })
-
             this.message = "";
         }
     },
@@ -83,6 +75,6 @@ const vm = new Vue({
 
 // Some event handling -> These events are coming from the server
 socket.addEventListener('connected', setUserId);
-socket.addEventListener('new_user', connectSound);
+socket.addEventListener('new_user', soundConnection);
 socket.addEventListener('user_disconnect', runDisconnectMessage);
 socket.addEventListener('new_message', appendNewMessage);
